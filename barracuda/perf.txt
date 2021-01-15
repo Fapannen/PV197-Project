@@ -1,0 +1,12 @@
+Initial version -O2:                                               7847.043945
+Removed redundant position computing and "in" array access -O2:    8299.672852
+Shared memory, data locality exploit                               8351.838867
+Shared memory, data locality, padding in shared mem                8984.913086
+Shared memory, data locality, padding in shared mem, no red. write 8999.825195
+All previous, but different access pattern (Doesnt work on all N)  16015.130859
+All previous, works for all inputs N*32                            16909.503906
+All previous, __restrict__                                         16935.658203 (But similar to one above)
+All previous, loading from glob. mem on demand                     16709.480469
+All previous, assign more work to one thread (Not on demand)       17649.894531
+Previous + flushed write to global mem.                            **17801.730469** (Slower on RTX, better on GTX)
+Previous, but BLOCK 256                                            ***17954.650391***
